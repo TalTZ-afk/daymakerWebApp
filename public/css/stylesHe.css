@@ -1,0 +1,36 @@
+body {
+  padding: 20px;
+}
+
+input {
+  text-align: center;
+}
+
+.forgot-pass-div {
+  text-align: right;
+}
+
+.invalid-feedback {
+  text-align: right;
+  font-weight: bold;
+}
+
+.btn-google {
+  text-align: center;
+  padding-right: 3rem;
+}
+
+.jumbotron {
+  text-align: right;
+  max-width: 30rem;
+  margin: 3rem auto;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.forgot-btn, .forgot-btn-home {
+  margin: 0.5rem 0 0 auto;
+}
+
+.jumbotron a {
+  max-width: 20rem;
+}

@@ -1,0 +1,141 @@
+
+html, body {
+  background: linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
+  text-align: center;
+}
+
+body {
+  padding: 20px;
+}
+
+.container {
+  text-align: center;
+  background: none;
+  margin-top: 5rem;
+}
+
+.dropdown-container {
+  position: absolute;
+  top: 3rem;
+  right: 13%;
+  width: 2.5rem;
+}
+
+.dropdown-container button {
+  padding: 7px 10px;
+}
+
+.logo-img {
+  width: 12rem;
+  border-radius: 100%;
+}
+
+.lead {
+  text-align: center;
+  font-size: 2rem;
+}
+
+
+.hr-div {margin: -6rem auto; width: 10%; transform: rotate(90deg);}
+.hr-div p {transform: rotate(-90deg);}
+
+
+@media only screen and (min-width: 992px) {
+  .hr-div {margin: 0; width: 16.66%; transform: rotate(0);}
+  .hr-div p {transform: rotate(0);}
+}
+
+.row {
+  margin: 0 auto;
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.315);
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.forgot-pass-div {
+  text-align: left;
+  margin-top: -0.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.forgot-pass {
+  color: black;
+}
+
+.forgot-pass:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.invalid-feedback {
+  text-align: left;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: 0;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 0.1rem;
+}
+
+.btn-google {
+  margin-top: 1rem;
+}
+
+.vertical-hr {
+  height: 7rem;
+  border-top: none;
+  border-left: 1px #aaaaaa solid;
+  width: 1px;
+}
+
+.jumbotron {
+  text-align: left;
+  max-width: 30rem;
+  margin: 5rem auto 0 auto;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.h1-404 {
+  text-align: center;
+  font-size: 7rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+}
+
+.text-404 {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.a-404 {
+  width: 15rem;
+}
+
+.invalid-call {
+  text-align: center;
+  background-color: #e41749;
+  height: 3rem;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.invalid-call p {
+  margin: 0 auto;
+}
+
+.forgot-btn, .forgot-btn-home {
+  margin-top: 1.5rem;
+  width: 10rem;
+  display: block;
+}
+
+.forgot-btn-home {
+  margin-top: 0.5rem;
+}
