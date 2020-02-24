@@ -1442,4 +1442,4 @@ app.get("*", function(req, res) {
   }
 });
 
-app.listen(API_PORT, "192.168.43.227", () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(process.env.PORT || API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
