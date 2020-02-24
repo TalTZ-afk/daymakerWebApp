@@ -96,7 +96,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/google/daymaker"////////////TODO///////////
+    callbackURL: "https://daymakerapp.herokuapp.com/auth/google/daymaker"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id, username: profile.id, fullName: profile.displayName, image: profile._json['picture'], language: profile._json['locale'] }, function (err, user) {
