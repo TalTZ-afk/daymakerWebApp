@@ -1,0 +1,44 @@
+
+.flip-horizontal {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.un-flip {
+    position: absolute;
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.main-div {
+    position: absolute;
+    background: linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
+    font-size: 1.1rem;
+    font-family: "Quicksand", sans-serif;
+    width: 100%;
+    min-height: 100%;
+}
+
+@keyframes slide-right {
+    from {left: 0;}
+    to {left: 25rem;}
+}
+
+@keyframes slide-left {
+    from {left: 25rem;}
+    to {left: 0;}
+}
+
+@keyframes slide-left-he {
+    from {right: 0;}
+    to {right: 25rem;}
+}
+
+@keyframes slide-right-he {
+    from {right: 25rem;}
+    to {right: 0;}
+}

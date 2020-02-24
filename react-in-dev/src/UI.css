@@ -1,0 +1,178 @@
+
+.UI {
+    background-color: #f0f0f0;
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 25rem;
+    max-width: 50%;
+    height: 100%;
+    padding: 0 2%;
+    z-index: -1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.UI-btn-out {
+    position: fixed;
+    top: 20px;
+    left: 2%;
+    border-radius: 100%;
+    width: 4rem;
+    box-shadow: gray 3px 3px 6px;
+    cursor: pointer;
+}
+
+.UI-btn-in {
+    position: relative;
+    display: block;
+    top: 20px;
+    border-radius: 100%;
+    width: 4rem;
+    box-shadow: none;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+@keyframes ui-img-drop {
+    from {box-shadow: gray 3px 3px 6px;}
+    to {box-shadow: none; z-index: -2;}
+}
+
+@keyframes ui-img-float {
+    from {box-shadow: none;}
+    to {box-shadow: gray 3px 3px 6px;}
+}
+
+.UI-obj {
+    height: 4rem;
+    padding: 1.4rem 1rem;
+}
+
+.user-name {
+    margin-top: -4rem;
+    height: 4rem;
+    width: 100%;
+}
+
+.user-name h4 {
+    position: absolute;
+    margin: 1.3rem 6rem;
+    width: 100%;
+}
+
+.btn-dropdown {
+    background-color: black;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+}
+
+.dropdown-menu {
+    margin-top: 1rem;
+    width: 17rem;
+}
+
+.color-pick {
+    height: 6rem;
+}
+
+.color-pick:hover {
+    background-color: white;
+}
+
+.color-btn {
+    margin: 0.7rem;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+}
+
+.color-btn:hover {
+    margin: -0.5rem 0.2rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.red {
+    background-color: #FF6666;
+}
+
+.blue {
+    background-color: #38b2f8;
+} 
+
+.green {
+    background-color: #42e6a4;
+}
+
+.black {
+    background-color: black;
+}
+
+.lang-pick:hover {
+    background-color: white;
+}
+
+.UI-obj h3 {
+    min-width: 15rem;
+    display: inline;
+}
+
+.UI-obj:hover {
+    background-color: rgba(0, 0, 0, 0.062);
+    cursor: pointer;
+}
+
+.List-buttons {
+    position: absolute;
+    display: inline;
+    right: 2rem;
+    flex-shrink: 0;
+    margin-top: -2%;
+}
+
+.List-buttons button {
+    border: none;
+    font-size: 1em;
+    margin: 0.4em;
+    background: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    color: #000;
+}
+
+.List-edit-form {
+    margin-top: -0.85rem;
+}
+
+.List-edit-form input {
+    width: 10rem;
+    border: none;
+    background: #fff;
+    padding: 0 1.5em;
+    font-size: initial;
+}
+
+.List-edit-form button {
+    position: absolute;
+    margin-top: 0.1rem;
+    font-size: 1.5rem;
+    border: none;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.List-edit-form input,
+.List-edit-form button {
+    font-family: "Quicksand", sans-serif;
+    height: 3rem;
+}
+
+hr {
+    margin: 1rem 0;
+}
