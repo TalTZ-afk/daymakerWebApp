@@ -34,7 +34,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const dbRoute = "mongodb+srv://admin-Tal:aA7XFL6IDnBwoMzu@cluster0-wkey1.mongodb.net/daymakerDB";
+const dbRoute = process.env.MONGOOSE_ROUTE;
 
 mongoose.connect(dbRoute, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 mongoose.set('useCreateIndex', true);
