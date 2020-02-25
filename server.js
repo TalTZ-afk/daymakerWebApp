@@ -68,6 +68,7 @@ const userSchema = new mongoose.Schema({
     googleId: String,
     fullName: String,
     image: String,
+    welcomeSent: Boolean,
     color: String,
     language: String,
     locale: String,
@@ -667,48 +668,57 @@ app.get("/auth/google/daymaker",
                         }
                     });
                 } else {}
-                var transporter = nodemailer.createTransport({
-                  service: "gmail",
-                  auth: {
-                    user: "daymakerapp@gmail.com",
-                    pass: process.env.APP_PASSWORD
-                  }
-                });
+                if(user.welcomeSent === undefined || user.welcomeSent === false) {
+                  var transporter = nodemailer.createTransport({
+                    service: "gmail",
+                    auth: {
+                      user: "daymakerapp@gmail.com",
+                      pass: process.env.APP_PASSWORD
+                    }
+                  });
 
-                if(user.locale.slice(0,2) === "he") {
-                  var mailOptions = {
-                    from: "daymakerapp@gmail.com",
-                    to: user.username,
-                    subject: "ברוכים הבאים!",
-                    text: "היי," + "\n\n" +
-                          "אנחנו כל כך שמחים שבחרתם להשתמש בדיימייקר ומקווים שתמצאו בה את כל מה שחיפשתם ועוד. אנחנו מאמינים שהאפליקציה שלנו שימושית, יעילה, וידידותית למשתמש, ואנו מקווים שגם אתם תראו אותה כך. ברוכים הבאים למשפחה! 😄" + "\n\n" +
-                          "שלכם, \n" + "צוות הדיימייקר"
-                  };
-                } else if(user.locale.slice(0,2) === "en") {
-                  var mailOptions = {
-                    from: "daymakerapp@gmail.com",
-                    to: user.username,
-                    subject: "Welcome!",
-                    text: "Hi," + "\n\n" +
-                          "We are so glad you chose to use Daymaker and hope you'll find in it every thing you have been looking for and more. We belive that our app is useful, efficient, and user freindly, and we hope you'll see it as well. Welcome to the family! 😄" + "\n\n" +
-                          "Yours truely, \n" + "The Daymaker Team"
-                  };
-                } else {
-                  var mailOptions = {
-                    from: "daymakerapp@gmail.com",
-                    to: user.username,
-                    subject: "Welcome!",
-                    text: "Hi," + "\n\n" +
-                          "We are so glad you chose to use Daymaker and hope you'll find in it every thing you have been looking for and more. We belive that our app is useful, efficient, and user freindly, and we hope you'll see it as well. Welcome to the family! 😄" + "\n\n" +
-                          "Yours truely, \n" + "The Daymaker Team"
-                  };
+                  if(user.locale.slice(0,2) === "he") {
+                    var mailOptions = {
+                      from: "daymakerapp@gmail.com",
+                      to: user.username,
+                      subject: "ברוכים הבאים!",
+                      text: "היי," + "\n\n" +
+                            "אנחנו כל כך שמחים שבחרתם להשתמש בדיימייקר ומקווים שתמצאו בה את כל מה שחיפשתם ועוד. אנחנו מאמינים שהאפליקציה שלנו שימושית, יעילה, וידידותית למשתמש, ואנו מקווים שגם אתם תראו אותה כך. ברוכים הבאים למשפחה! 😄" + "\n\n" +
+                            "שלכם, \n" + "צוות הדיימייקר"
+                    };
+                  } else if(user.locale.slice(0,2) === "en") {
+                    var mailOptions = {
+                      from: "daymakerapp@gmail.com",
+                      to: user.username,
+                      subject: "Welcome!",
+                      text: "Hi," + "\n\n" +
+                            "We are so glad you chose to use Daymaker and hope you'll find in it every thing you have been looking for and more. We belive that our app is useful, efficient, and user freindly, and we hope you'll see it as well. Welcome to the family! 😄" + "\n\n" +
+                            "Yours truely, \n" + "The Daymaker Team"
+                    };
+                  } else {
+                    var mailOptions = {
+                      from: "daymakerapp@gmail.com",
+                      to: user.username,
+                      subject: "Welcome!",
+                      text: "Hi," + "\n\n" +
+                            "We are so glad you chose to use Daymaker and hope you'll find in it every thing you have been looking for and more. We belive that our app is useful, efficient, and user freindly, and we hope you'll see it as well. Welcome to the family! 😄" + "\n\n" +
+                            "Yours truely, \n" + "The Daymaker Team"
+                    };
+                  }
+
+                  transporter.sendMail(mailOptions, function(err) {
+                    if(err) {
+                      console.log(err);
+                    } else {
+                      user.welcomeSent = true;
+                      user.save(function(err) {
+                        if(err) {
+                          console.log(err);
+                        }
+                      });
+                    }
+                  });
                 }
-
-                transporter.sendMail(mailOptions, function(err) {
-                  if(err) {
-                    console.log(err);
-                  }
-                });
             }
         });
         res.redirect("/");
