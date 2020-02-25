@@ -675,7 +675,7 @@ app.get("/auth/google/daymaker",
                   }
                 });
 
-                if(req.headers["accept-language"].slice(0,2) === "he") {
+                if(user.locale.slice(0,2) === "he") {
                   var mailOptions = {
                     from: "daymakerapp@gmail.com",
                     to: user.username,
@@ -684,7 +684,7 @@ app.get("/auth/google/daymaker",
                           "אנחנו כל כך שמחים שבחרתם להשתמש בדיימייקר ומקווים שתמצאו בה את כל מה שחיפשתם ועוד. אנחנו מאמינים שהאפליקציה שלנו שימושית, יעילה, וידידותית למשתמש, ואנו מקווים שגם אתם תראו אותה כך. ברוכים הבאים למשפחה! 😄" + "\n\n" +
                           "שלכם, \n" + "צוות הדיימייקר"
                   };
-                } else if(req.headers["accept-language"].slice(0,2) === "en") {
+                } else if(user.locale.slice(0,2) === "en") {
                   var mailOptions = {
                     from: "daymakerapp@gmail.com",
                     to: user.username,
