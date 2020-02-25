@@ -26,13 +26,9 @@ class TodoList extends Component {
   month;
   fullDate = this.printDayAndMonth() + this.date;
 
-  dateString = new Date().toISOString();
-  year = this.dateString.toString().slice(0, 4);
-  month = this.dateString.toString().slice(5, 7);
-  day = this.dateString.toString().slice(8, 10);
-  yesterday = this.day - 1;
-  currentDate = this.day + "/" + this.month + "/" + this.year;
-  yesterdayDate = this.yesterday + "/" + this.month + "/" + this.year;
+  yesterday = new Date().getDate() - 1;
+  currentDate = new Date().getDate() + "/" + "" + 0 + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+  yesterdayDate = this.yesterday + "/" + "" + 0 + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
 
   printDayAndMonth() {
     

@@ -8,6 +8,7 @@ class NewTodoForm extends Component {
     super(props);
     this.state = { 
       task: "",
+      currentDate: new Date(),
       chosenDate: new Date()
     };
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +34,7 @@ class NewTodoForm extends Component {
 
   handleChangeDate(date) {
     this.setState({
-      chosenDate: date
+      chosenDate: date.getDate() + "/" + "" + 0 + (date.getMonth() + 1) + "/" + date.getFullYear()
     });
   }
 
@@ -51,7 +52,7 @@ class NewTodoForm extends Component {
             onChange={this.handleChange}
           />
           <DatePicker 
-            selected={this.state.chosenDate}
+            selected={this.state.currentDate}
             onChange={this.handleChangeDate}
             minDate={new Date()}
             showYearDropdown

@@ -34,7 +34,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const dbRoute = process.env.MONGOOSE_ROUTE;
+const dbRoute = 'mongodb://localhost:27017/testDB';
 
 mongoose.connect(dbRoute, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 mongoose.set('useCreateIndex', true);
@@ -96,7 +96,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://daymakerapp.herokuapp.com/auth/google/daymaker"
+    callbackURL: "http://localhost:3001/auth/google/daymaker"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id, username: profile.id, fullName: profile.displayName, image: profile._json['picture'], language: profile._json['locale'] }, function (err, user) {
@@ -252,7 +252,7 @@ router.post('/:idAndCall', (req, res) => {
                             foundTodo.chosenDate = update;
                             foundTodo.dateExpired = false;
                         }
-
+                        
                         foundUser.save((err) => {
                             if (err) return res.json({ success: false, error: err });
                             return res.json({ success: true });
@@ -279,10 +279,7 @@ router.post('/:idAndCall', (req, res) => {
           todo.todo = newTodo.task;
           todo.completed = newTodo.completed;
           if(newTodo.chosenDate !== undefined) {
-              let year = newTodo.chosenDate.toString().slice(0, 4);
-              let month = newTodo.chosenDate.toString().slice(5, 7);
-              let day = newTodo.chosenDate.toString().slice(8, 10);
-              todo.chosenDate = day + "/" + month + "/" + year;
+              todo.chosenDate = newTodo.chosenDate;
               todo.dateExpired = false;
           }
 
@@ -1442,4 +1439,4 @@ app.get("*", function(req, res) {
   }
 });
 
-app.listen(process.env.PORT || API_PORT, "0.0.0.0", () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
