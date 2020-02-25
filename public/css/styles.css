@@ -75,7 +75,7 @@ body {
 .invalid-feedback {
   text-align: left;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
   margin-top: 0;
 }
 
