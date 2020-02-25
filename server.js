@@ -700,7 +700,7 @@ app.get("/home/:language", function(req, res) {
     let register = "";
     let registerGoogle = "";
 
-    if(req.flash("failedToLogin").length !== 0) {
+    if(req.flash("failedToLogin").length !== 0) && req.flash("didntFailedToLogin").length === 0 {
       loginIsInvalid = "is-invalid";
       emailIsInvalid = "";
       passwordIsInvalid = "";
@@ -1359,6 +1359,7 @@ app.post("/login/:language", function(req, res) {
     req.login(user, function(err) {
         if(!err) {
             passport.authenticate("local", { failureRedirect: "/home/" + language, failureFlash: true })(req, res, function() {
+                req.flash("didntFailedToLogin", "didntFailedToLogin");
                 res.redirect("/");
             });
         } else {
