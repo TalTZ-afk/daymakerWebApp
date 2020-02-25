@@ -700,7 +700,7 @@ app.get("/home/:language", function(req, res) {
     let register = "";
     let registerGoogle = "";
 
-    if(req.flash("failedToLogin").length !== 0) && req.flash("didntFailedToLogin").length === 0 {
+    if(req.flash("failedToLogin").length !== 0 && req.flash("didntFailedToLogin").length === 0) {
       loginIsInvalid = "is-invalid";
       emailIsInvalid = "";
       passwordIsInvalid = "";
