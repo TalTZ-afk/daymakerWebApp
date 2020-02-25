@@ -34,7 +34,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const dbRoute = 'mongodb://localhost:27017/testDB';
+const dbRoute = process.env.MONGOOSE_ROUTE;
 
 mongoose.connect(dbRoute, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 mongoose.set('useCreateIndex', true);
@@ -252,7 +252,7 @@ router.post('/:idAndCall', (req, res) => {
                             foundTodo.chosenDate = update;
                             foundTodo.dateExpired = false;
                         }
-                        
+
                         foundUser.save((err) => {
                             if (err) return res.json({ success: false, error: err });
                             return res.json({ success: true });
@@ -1439,4 +1439,4 @@ app.get("*", function(req, res) {
   }
 });
 
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+app.listen(API_PORT, "192.168.43.227", () => console.log(`LISTENING ON PORT ${API_PORT}`));
